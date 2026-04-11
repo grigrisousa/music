@@ -1,5 +1,11 @@
+package streaming.main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import streaming.model.Musica;
+import streaming.model.Playlist;
+import streaming.model.Usuario;
 
 public class StreamingMusica {
 
@@ -8,7 +14,7 @@ public class StreamingMusica {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main() {
         adicionarMusicasTeste();
 
         int opcao;
@@ -85,7 +91,7 @@ public class StreamingMusica {
     }
 
     public static void adicionarMusicaNaPlaylist() {
-        if (usuario.playlists.isEmpty()) {
+        if (usuario.getPlaylists().isEmpty()) {
             System.out.println("Crie uma playlist primeiro!");
             return;
         }
@@ -96,14 +102,14 @@ public class StreamingMusica {
         int m = lerOpcao() - 1;
 
         System.out.print("Escolha o número da playlist: ");
-        for (int i = 0; i < usuario.playlists.size(); i++) {
-            System.out.println((i + 1) + " - " + usuario.playlists.get(i).nome);
+        for (int i = 0; i < usuario.getPlaylists().size(); i++) {
+            System.out.println((i + 1) + " - " + usuario.getPlaylists().get(i).getNome());
         }
 
         int p = lerOpcao() - 1;
 
-        if (m >= 0 && m < musicas.size() && p >= 0 && p < usuario.playlists.size()) {
-            usuario.playlists.get(p).adicionarMusica(musicas.get(m));
+        if (m >= 0 && m < musicas.size() && p >= 0 && p < usuario.getPlaylists().size()) {
+            usuario.getPlaylists().get(p).adicionarMusica(musicas.get(m));
             System.out.println("✅ Música adicionada!");
         } else {
             System.out.println("Opção inválida!");
@@ -111,31 +117,32 @@ public class StreamingMusica {
     }
 
     public static void removerMusicaDaPlaylist() {
-        if (usuario.playlists.isEmpty()) {
+        if (usuario.getPlaylists().isEmpty()) {
             System.out.println("Nenhuma playlist!");
             return;
         }
 
-        for (int i = 0; i < usuario.playlists.size(); i++) {
-            System.out.println((i + 1) + " - " + usuario.playlists.get(i).nome);
+        for (int i = 0; i < usuario.getPlaylists().size(); i++) {
+            System.out.println((i + 1) + " - " + usuario.getPlaylists().get(i).getNome());
         }
 
         System.out.print("Escolha a playlist: ");
         int p = lerOpcao() - 1;
 
-        if (p < 0 || p >= usuario.playlists.size()) return;
+        if (p < 0 || p >= usuario.getPlaylists().size()) return;
 
-        Playlist playlist = usuario.playlists.get(p);
+        Playlist playlist;
+        playlist = usuario.getPlaylists().get(p);
 
-        for (int i = 0; i < playlist.musicas.size(); i++) {
-            System.out.println((i + 1) + " - " + playlist.musicas.get(i).titulo);
+        for (int i = 0; i < playlist.getMusicas().size(); i++) {
+            System.out.println((i + 1) + " - " + playlist.getMusicas().get(i).getTitulo());
         }
 
         System.out.print("Escolha a música para remover: ");
         int m = lerOpcao() - 1;
 
-        if (m >= 0 && m < playlist.musicas.size()) {
-            playlist.musicas.remove(m);
+        if (m >= 0 && m < playlist.getMusicas().size()) {
+            playlist.getMusicas().remove(m);
             System.out.println("❌ Música removida!");
         }
     }
@@ -177,7 +184,7 @@ public class StreamingMusica {
         String busca = scanner.nextLine().toLowerCase();
 
         for (Musica m : musicas) {
-            if (m.titulo.toLowerCase().contains(busca)) {
+            if (m.getTitulo().toLowerCase().contains(busca)) {
                 m.exibirInfo();
             }
         }
@@ -186,69 +193,5 @@ public class StreamingMusica {
     public static void adicionarMusicasTeste() {
         musicas.add(new Musica("Bohemian Rhapsody", "Queen", 354, "Rock"));
         musicas.add(new Musica("Billie Jean", "Michael Jackson", 293, "Pop"));
-    }
-}
-
-
-class Musica {
-    String titulo, artista, genero;
-    int duracao;
-
-    public Musica(String t, String a, int d, String g) {
-        titulo = t;
-        artista = a;
-        duracao = d;
-        genero = g;
-    }
-
-    public String formatarDuracao() {
-        return (duracao / 60) + ":" + String.format("%02d", duracao % 60);
-    }
-
-    public void exibirInfo() {
-        System.out.println("Título: " + titulo);
-        System.out.println("Artista: " + artista);
-        System.out.println("Duração: " + formatarDuracao());
-        System.out.println("Gênero: " + genero);
-        System.out.println("----------------");
-    }
-}
-
-class Playlist {
-    String nome;
-    ArrayList<Musica> musicas = new ArrayList<>();
-
-    public Playlist(String nome) {
-        this.nome = nome;
-    }
-
-    public void adicionarMusica(Musica m) {
-        musicas.add(m);
-    }
-
-    public void listarMusicas() {
-        System.out.println("\nPlaylist: " + nome);
-        for (Musica m : musicas) {
-            m.exibirInfo();
-        }
-    }
-}
-
-class Usuario {
-    String nome;
-    ArrayList<Playlist> playlists = new ArrayList<>();
-
-    public Usuario(String nome) {
-        this.nome = nome;
-    }
-
-    public void adicionarPlaylist(Playlist p) {
-        playlists.add(p);
-    }
-
-    public void listarPlaylists() {
-        for (Playlist p : playlists) {
-            p.listarMusicas();
-        }
     }
 }
