@@ -10,11 +10,14 @@ public class Usuario {
         this.nome = (nome == null || nome.isEmpty()) ? "Usuário" : nome;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public void setNome(String nome) {
         if (nome != null && !nome.isEmpty()) {
             this.nome = nome;
         }
-    }
     }
 
     public ArrayList<Playlist> getPlaylists() {

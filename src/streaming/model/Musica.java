@@ -4,7 +4,7 @@ public class Musica {
     private String titulo, artista, genero;
     private int duracao;
 
-    // ✅ Construtor com validação
+    // Construtor com validação
     public Musica(String t, String a, int d, String g) {
         this.titulo = (t == null || t.isEmpty()) ? "Desconhecido" : t;
         this.artista = (a == null || a.isEmpty()) ? "Desconhecido" : a;
@@ -12,17 +12,17 @@ public class Musica {
         this.duracao = (d > 0) ? d : 0;
     }
 
-    // ✅ Sobrecarga + uso de this()
+    // Sobrecarga + this()
     public Musica(String titulo, String artista) {
         this(titulo, artista, 0, "Desconhecido");
     }
 
-    // ✅ Getter
+    // Getter
     public String getTitulo() {
         return titulo;
     }
 
-    // ✅ Setters com validação
+    // Setters com validação
     public void setTitulo(String titulo) {
         if (titulo != null && !titulo.isEmpty()) {
             this.titulo = titulo;
@@ -45,5 +45,17 @@ public class Musica {
         if (duracao > 0) {
             this.duracao = duracao;
         }
+    }
+
+    public String formatarDuracao() {
+        return (duracao / 60) + ":" + String.format("%02d", duracao % 60);
+    }
+
+    public void exibirInfo() {
+        System.out.println("Título: " + titulo);
+        System.out.println("Artista: " + artista);
+        System.out.println("Duração: " + formatarDuracao());
+        System.out.println("Gênero: " + genero);
+        System.out.println("----------------");
     }
 }

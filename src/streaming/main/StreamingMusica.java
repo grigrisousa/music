@@ -14,7 +14,7 @@ public class StreamingMusica {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main() {
+    public static void main(String[] args) {
         adicionarMusicasTeste();
 
         int opcao;
@@ -131,8 +131,7 @@ public class StreamingMusica {
 
         if (p < 0 || p >= usuario.getPlaylists().size()) return;
 
-        Playlist playlist;
-        playlist = usuario.getPlaylists().get(p);
+        Playlist playlist = usuario.getPlaylists().get(p);
 
         for (int i = 0; i < playlist.getMusicas().size(); i++) {
             System.out.println((i + 1) + " - " + playlist.getMusicas().get(i).getTitulo());

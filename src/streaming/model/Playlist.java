@@ -14,7 +14,7 @@ public class Playlist {
         if (nome != null && !nome.isEmpty()) {
             this.nome = nome;
         }
-    } // ✅ sem ponto e vírgula e sem fechar a classe aqui
+    }
 
     public String getNome() {
         return nome;
