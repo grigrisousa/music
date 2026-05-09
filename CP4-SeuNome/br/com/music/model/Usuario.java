@@ -2,7 +2,7 @@ package br.com.music.model;
 
 import java.util.ArrayList;
 
-public class Usuario {
+public abstract class Usuario {
 
     protected String nome;
     protected ArrayList<Playlist> playlists;
@@ -10,6 +10,14 @@ public class Usuario {
     public Usuario(String nome) {
         this.nome = nome;
         this.playlists = new ArrayList<>();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public ArrayList<Playlist> getPlaylists() {
+        return playlists;
     }
 
     public void adicionarPlaylist(Playlist p) {
@@ -27,7 +35,5 @@ public class Usuario {
         }
     }
 
-    public void ouvirMusica(Musica m) {
-        m.exibirInfo();
-    }
+    public abstract void ouvirMusica(Musica m);
 }

@@ -13,13 +13,16 @@ public class UsuarioFree extends Usuario {
         if (playlists.size() >= LIMITE_PLAYLISTS) {
             System.out.println("❌ Limite de playlists atingido (Free)");
         } else {
-            super.adicionarPlaylist(p); // ✅ super.metodo()
+            super.adicionarPlaylist(p); // chama o metodo original da classe pai
+            System.out.println("✅ Playlist adicionada!");
         }
     }
 
     @Override
     public void ouvirMusica(Musica m) {
+        System.out.println("\n👤 Usuário FREE: " + nome);
+        m.exibirInfo(true);
+
         System.out.println("🎧 Tocando com anúncios...");
-        super.ouvirMusica(m);
     }
 }

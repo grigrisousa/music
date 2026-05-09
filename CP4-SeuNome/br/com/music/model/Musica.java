@@ -2,16 +2,32 @@ package br.com.music.model;
 
 public class Musica {
 
-    public String titulo;
-    public String artista;
-    public int duracao;
-    public String genero;
+    public String getTitulo;
+    private String titulo;
+    private String artista;
+    private int duracao;
+    private String genero;
 
     public Musica(String titulo, String artista, int duracao, String genero) {
         this.titulo = titulo;
         this.artista = artista;
         this.duracao = duracao;
         this.genero = genero;
+    }
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public String getGenero() {
+        return genero;
     }
 
     public void exibirInfo() {
