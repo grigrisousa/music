@@ -10,15 +10,15 @@ O projeto foi desenvolvido em Java utilizando os principais conceitos de Program
 
 ---
 
-# 🚀 Funcionalidades
+# Funcionalidades
 
-## ✅ Cadastro e gerenciamento de músicas
+## Cadastro e gerenciamento de músicas
 
 * Cadastro de músicas
 * Listagem de músicas
 * Busca de músicas por título
 
-## ✅ Sistema de playlists
+## Sistema de playlists
 
 * Criação de playlists
 * Adição de músicas em playlists
@@ -36,13 +36,13 @@ O projeto foi desenvolvido em Java utilizando os principais conceitos de Program
 * Parar reprodução
 * Histórico de reprodução
 
-## ✅ Sistema Premium
+##  Sistema Premium
 
 * Download de músicas
 * Remoção de downloads
 * Verificação de músicas baixadas
 
-## ✅ Estatísticas
+## Estatísticas
 
 * Quantidade de usuários Free
 * Quantidade de usuários Premium
@@ -50,17 +50,17 @@ O projeto foi desenvolvido em Java utilizando os principais conceitos de Program
 
 ---
 
-# 🧠 Conceitos de POO Aplicados
+# Conceitos de POO Aplicados
 
-## ✅ Encapsulamento
+## Encapsulamento
 
 Uso de atributos privados com métodos getters.
 
-## ✅ Herança
+## Herança
 
 As classes `UsuarioFree`, `UsuarioPremium` e `PlaylistAutomatica` herdam comportamento de suas superclasses.
 
-## ✅ Polimorfismo
+## Polimorfismo
 
 Uso de referências genéricas como:
 
@@ -68,23 +68,23 @@ Uso de referências genéricas como:
 Usuario usuarioLogado;
 ```
 
-## ✅ Classes Abstratas
+## Classes Abstratas
 
 * `Usuario`
 * `ItemReproducao`
 
-## ✅ Interfaces
+## Interfaces
 
 * `Reproduzivel`
 * `Baixavel`
 
-## ✅ Sobrescrita de Métodos
+## Sobrescrita de Métodos
 
 Uso de `@Override` em métodos sobrescritos.
 
 ---
 
-# 📂 Estrutura de Pacotes
+# Estrutura de Pacotes
 
 ```text
 src/
@@ -107,7 +107,7 @@ src/
 
 ---
 
-# ▶️ Como Executar o Projeto
+# Como Executar o Projeto
 
 1. Clone ou baixe o projeto
 2. Abra o projeto no IntelliJ IDEA
@@ -121,44 +121,44 @@ StreamingMusica.java
 
 ---
 
-# 👤 Autor
+# Autor
 
 * Nome: Ingrid Ferreira de Sousa
 * RA: 45999279
 
 ---
 
-# 📅 Histórico
+# Histórico
 
-## ✅ Checkpoint 1
+##  Checkpoint 1
 
 * Estrutura inicial do sistema
 * Cadastro de músicas
 * Listagem de músicas
 
-## ✅ Checkpoint 2
+## Checkpoint 2
 
 * Criação de playlists
 * Associação entre músicas e playlists
 
-## ✅ Checkpoint 3
+## Checkpoint 3
 
 * Implementação de herança
 * Classes `UsuarioFree` e `UsuarioPremium`
 
-## ✅ Checkpoint 4
+## Checkpoint 4
 
 * Implementação de polimorfismo
 * Reprodução de músicas
 * Sistema de estatísticas
 
-## ✅ Checkpoint 5
+## Checkpoint 5
 
 * Implementação de interfaces
 * Sistema de downloads
 * Organização em pacotes
 
-## ✅ Checkpoint Final
+## Checkpoint Final
 
 * Finalização do sistema
 * Histórico de reprodução
@@ -167,7 +167,7 @@ StreamingMusica.java
 
 ---
 
-# 👤 Usuários de Teste
+#  Usuários de Teste
 
 | Usuário | Tipo    |
 | ------- | ------- |
@@ -177,7 +177,7 @@ StreamingMusica.java
 
 ---
 
-# 🎵 Músicas de Teste
+#  Músicas de Teste
 
 * Bohemian Rhapsody - Queen
 * Billie Jean - Michael Jackson
@@ -185,7 +185,7 @@ StreamingMusica.java
 
 ---
 
-# 📚 Objetivo Acadêmico
+#  Objetivo Acadêmico
 
 Este projeto teve como objetivo praticar:
 
@@ -199,15 +199,15 @@ Este projeto teve como objetivo praticar:
 
 ---
 
-# ✅ Status do Projeto
+# Status do Projeto
 
-✔️ Projeto finalizado
-✔️ Funcionalidades implementadas
-✔️ Estrutura organizada
-✔️ Código compilando corretamente
+*Projeto finalizado
+*Funcionalidades implementadas
+*Estrutura organizada
+*Código compilando corretamente
 
 ---
 
-# 👩‍💻 Desenvolvedora
+# Desenvolvedora
 
 Projeto desenvolvido por Ingrid Ferreira de Sousa para fins acadêmicos.
