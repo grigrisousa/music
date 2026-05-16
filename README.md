@@ -24,12 +24,12 @@ O projeto foi desenvolvido em Java utilizando os principais conceitos de Program
 * Adição de músicas em playlists
 * Playlist automática
 
-## ✅ Tipos de usuários
+## Tipos de usuários
 
 * Usuário Free
 * Usuário Premium
 
-## ✅ Reprodução de músicas
+## Reprodução de músicas
 
 * Reprodução de músicas
 * Pausar reprodução
@@ -99,7 +99,7 @@ src/
 
 ---
 
-# 🛠️ Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 * Java
 * IntelliJ IDEA
