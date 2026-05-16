@@ -1,4 +1,4 @@
-package br.com.music.model;
+package br.com.streaming.modelo;
 
 public class PlaylistAutomatica extends Playlist {
 
@@ -14,7 +14,7 @@ public class PlaylistAutomatica extends Playlist {
         }
 
         System.out.println(
-                "✨ Playlist automática criada!"
+                " Playlist automática criada!"
         );
     }
 
@@ -22,7 +22,7 @@ public class PlaylistAutomatica extends Playlist {
     public void listarMusicas() {
 
         System.out.println(
-                "\n🤖 Playlist automática:"
+                "\n Playlist automática:"
         );
 
         super.listarMusicas();

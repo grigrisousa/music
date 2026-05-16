@@ -1,17 +1,18 @@
-package br.com.music.main;
+package br.com.streaming.principal;
 
-import br.com.music.model.*;
+import br.com.streaming.modelo.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StreamingMusica {
 
     // Lista de músicas do sistema
-    static ArrayList<Musica> musicas = new ArrayList<>();
+    static List<Musica> musicas = new ArrayList<>();
 
-    // ArrayList polimórfico de usuários
-    static ArrayList<Usuario> usuarios = new ArrayList<>();
+    // Lista polimórfica de usuários
+    static List<Usuario> usuarios = new ArrayList<>();
 
     // Usuário logado
     static Usuario usuarioLogado;
@@ -22,9 +23,9 @@ public class StreamingMusica {
 
         cadastrarUsuariosTeste();
 
-        login();
-
         adicionarMusicasTeste();
+
+        login();
 
         int opcao;
 
@@ -43,23 +44,27 @@ public class StreamingMusica {
         scanner.close();
     }
 
-    // Login de usuários
+    // LOGIN
     public static void login() {
 
         System.out.println("=== LOGIN ===");
 
         listarUsuarios();
 
-        System.out.print("Digite o número do usuário: ");
+        System.out.print(
+                "Digite o número do usuário: "
+        );
 
         int escolha = lerOpcao() - 1;
 
-        if (escolha >= 0 && escolha < usuarios.size()) {
+        if (escolha >= 0
+                && escolha < usuarios.size()) {
 
-            usuarioLogado = usuarios.get(escolha);
+            usuarioLogado =
+                    usuarios.get(escolha);
 
             System.out.println(
-                    "\n✅ Login realizado com sucesso!"
+                    "\n✅ Login realizado!"
             );
 
             System.out.println(
@@ -69,24 +74,31 @@ public class StreamingMusica {
 
         } else {
 
-            System.out.println("❌ Usuário inválido!");
+            System.out.println(
+                    "❌ Usuário inválido!"
+            );
 
             login();
         }
     }
 
-    // Lista usuários cadastrados
+    // LISTAR USUÁRIOS
     public static void listarUsuarios() {
 
-        System.out.println("\n=== USUÁRIOS ===");
+        System.out.println(
+                "\n=== USUÁRIOS ==="
+        );
 
-        for (int i = 0; i < usuarios.size(); i++) {
+        for (int i = 0;
+             i < usuarios.size();
+             i++) {
 
-            Usuario u = usuarios.get(i);
+            Usuario usuario =
+                    usuarios.get(i);
 
             String tipo;
 
-            if (u instanceof UsuarioPremium) {
+            if (usuario instanceof UsuarioPremium) {
 
                 tipo = "Premium";
 
@@ -98,7 +110,7 @@ public class StreamingMusica {
             System.out.println(
                     (i + 1)
                             + " - "
-                            + u.getNome()
+                            + usuario.getNome()
                             + " ("
                             + tipo
                             + ")"
@@ -106,21 +118,43 @@ public class StreamingMusica {
         }
     }
 
+    // MENU
     public static void exibirMenu() {
 
-        System.out.println("\n=== SISTEMA DE STREAMING ===");
+        System.out.println(
+                "\n=== SISTEMA DE STREAMING ==="
+        );
 
-        System.out.println("1. Cadastrar música");
-        System.out.println("2. Listar músicas");
-        System.out.println("3. Buscar por título");
-        System.out.println("4. Gerenciar playlists");
-        System.out.println("5. Criar playlist automática");
-        System.out.println("6. Mostrar estatísticas");
+        System.out.println(
+                "1. Cadastrar música"
+        );
 
-        // instanceof
-        if (usuarioLogado instanceof UsuarioPremium) {
+        System.out.println(
+                "2. Listar músicas"
+        );
 
-            System.out.println("7. Baixar música");
+        System.out.println(
+                "3. Buscar por título"
+        );
+
+        System.out.println(
+                "4. Gerenciar playlists"
+        );
+
+        System.out.println(
+                "5. Criar playlist automática"
+        );
+
+        System.out.println(
+                "6. Mostrar estatísticas"
+        );
+
+        if (usuarioLogado
+                instanceof UsuarioPremium) {
+
+            System.out.println(
+                    "7. Baixar música"
+            );
         }
 
         System.out.println("0. Sair");
@@ -128,11 +162,14 @@ public class StreamingMusica {
         System.out.print("Escolha: ");
     }
 
+    // LER OPÇÃO
     public static int lerOpcao() {
 
         try {
 
-            return Integer.parseInt(scanner.nextLine());
+            return Integer.parseInt(
+                    scanner.nextLine()
+            );
 
         } catch (Exception e) {
 
@@ -140,7 +177,10 @@ public class StreamingMusica {
         }
     }
 
-    public static void processarOpcao(int opcao) {
+    // PROCESSAR MENU
+    public static void processarOpcao(
+            int opcao
+    ) {
 
         switch (opcao) {
 
@@ -170,13 +210,16 @@ public class StreamingMusica {
 
             case 7:
 
-                if (usuarioLogado instanceof UsuarioPremium) {
+                if (usuarioLogado
+                        instanceof UsuarioPremium) {
 
                     baixarMusica();
 
                 } else {
 
-                    System.out.println("❌ Apenas Premium!");
+                    System.out.println(
+                            "❌ Apenas Premium!"
+                    );
                 }
 
                 break;
@@ -185,34 +228,46 @@ public class StreamingMusica {
                 break;
 
             default:
-                System.out.println("❌ Opção inválida!");
+
+                System.out.println(
+                        "❌ Opção inválida!"
+                );
         }
     }
 
-    // Estatísticas por tipo
+    // ESTATÍSTICAS
     public static void mostrarEstatisticas() {
 
         int free = 0;
         int premium = 0;
 
-        for (Usuario u : usuarios) {
+        for (Usuario usuario : usuarios) {
 
-            if (u instanceof UsuarioFree) {
+            if (usuario
+                    instanceof UsuarioFree) {
 
                 free++;
             }
 
-            if (u instanceof UsuarioPremium) {
+            if (usuario
+                    instanceof UsuarioPremium) {
 
                 premium++;
             }
         }
 
-        System.out.println("\n=== ESTATÍSTICAS ===");
+        System.out.println(
+                "\n=== ESTATÍSTICAS ==="
+        );
 
-        System.out.println("Usuários Free: " + free);
+        System.out.println(
+                "Usuários Free: " + free
+        );
 
-        System.out.println("Usuários Premium: " + premium);
+        System.out.println(
+                "Usuários Premium: "
+                        + premium
+        );
 
         System.out.println(
                 "Total de músicas: "
@@ -220,11 +275,14 @@ public class StreamingMusica {
         );
     }
 
+    // DOWNLOAD
     public static void baixarMusica() {
 
         if (musicas.isEmpty()) {
 
-            System.out.println("Nenhuma música disponível!");
+            System.out.println(
+                    "Nenhuma música disponível!"
+            );
 
             return;
         }
@@ -237,38 +295,54 @@ public class StreamingMusica {
 
         int index = lerOpcao() - 1;
 
-        if (index >= 0 && index < musicas.size()) {
+        if (index >= 0
+                && index < musicas.size()) {
 
-            // Casting
             ((UsuarioPremium) usuarioLogado)
-                    .baixarMusica(musicas.get(index));
+                    .baixar(
+                            musicas.get(index)
+                    );
 
         } else {
 
-            System.out.println("❌ Opção inválida!");
+            System.out.println(
+                    "❌ Opção inválida!"
+            );
         }
     }
 
+    // MENU PLAYLISTS
     public static void menuPlaylists() {
 
-        int op;
+        int opcao;
 
         do {
 
-            System.out.println("\n=== PLAYLISTS ===");
+            System.out.println(
+                    "\n=== PLAYLISTS ==="
+            );
 
-            System.out.println("1. Criar playlist");
+            System.out.println(
+                    "1. Criar playlist"
+            );
+
             System.out.println(
                     "2. Adicionar música à playlist"
             );
-            System.out.println("3. Listar playlists");
-            System.out.println("0. Voltar");
+
+            System.out.println(
+                    "3. Listar playlists"
+            );
+
+            System.out.println(
+                    "0. Voltar"
+            );
 
             System.out.print("Escolha: ");
 
-            op = lerOpcao();
+            opcao = lerOpcao();
 
-            switch (op) {
+            switch (opcao) {
 
                 case 1:
                     criarPlaylist();
@@ -283,23 +357,32 @@ public class StreamingMusica {
                     break;
             }
 
-        } while (op != 0);
+        } while (opcao != 0);
     }
 
+    // CRIAR PLAYLIST
     public static void criarPlaylist() {
 
-        System.out.print("Nome da playlist: ");
+        System.out.print(
+                "Nome da playlist: "
+        );
 
-        String nome = scanner.nextLine();
+        String nome =
+                scanner.nextLine();
 
-        Playlist p = new Playlist(nome);
+        Playlist playlist =
+                new Playlist(nome);
 
-        usuarioLogado.adicionarPlaylist(p);
+        usuarioLogado
+                .adicionarPlaylist(playlist);
     }
 
+    // ADICIONAR MÚSICA
     public static void adicionarMusicaNaPlaylist() {
 
-        if (usuarioLogado.getPlaylists().isEmpty()) {
+        if (usuarioLogado
+                .getPlaylists()
+                .isEmpty()) {
 
             System.out.println(
                     "Crie uma playlist primeiro!"
@@ -314,62 +397,83 @@ public class StreamingMusica {
                 "Escolha o número da música: "
         );
 
-        int m = lerOpcao() - 1;
+        int musicaEscolhida =
+                lerOpcao() - 1;
 
-        System.out.println("\nEscolha a playlist:");
+        System.out.println(
+                "\nEscolha a playlist:"
+        );
 
         for (int i = 0;
-             i < usuarioLogado.getPlaylists().size();
+             i < usuarioLogado
+                     .getPlaylists()
+                     .size();
              i++) {
+
+            Playlist playlist =
+                    usuarioLogado
+                            .getPlaylists()
+                            .get(i);
 
             System.out.println(
                     (i + 1)
                             + " - "
-                            + usuarioLogado
-                            .getPlaylists()
-                            .get(i)
-                            .getNome()
+                            + playlist.getNome()
             );
         }
 
-        int p = lerOpcao() - 1;
+        int playlistEscolhida =
+                lerOpcao() - 1;
 
-        if (m >= 0
-                && m < musicas.size()
-                && p >= 0
-                && p < usuarioLogado
+        if (musicaEscolhida >= 0
+                && musicaEscolhida
+                < musicas.size()
+                && playlistEscolhida >= 0
+                && playlistEscolhida
+                < usuarioLogado
                 .getPlaylists()
                 .size()) {
 
             usuarioLogado
                     .getPlaylists()
-                    .get(p)
+                    .get(playlistEscolhida)
                     .adicionarMusica(
-                            musicas.get(m)
+                            musicas.get(
+                                    musicaEscolhida
+                            )
                     );
 
         } else {
 
-            System.out.println("❌ Opção inválida!");
+            System.out.println(
+                    "❌ Opção inválida!"
+            );
         }
     }
 
-    // Playlist automática
+    // PLAYLIST AUTOMÁTICA
     public static void criarPlaylistAutomatica() {
 
-        PlaylistAutomatica pa =
+        PlaylistAutomatica playlist =
                 new PlaylistAutomatica(
                         "Automática"
                 );
 
         Musica[] sistema =
-                musicas.toArray(new Musica[0]);
+                musicas.toArray(
+                        new Musica[0]
+                );
 
-        pa.gerarPlaylistAutomatica(sistema);
+        playlist
+                .gerarPlaylistAutomatica(
+                        sistema
+                );
 
-        usuarioLogado.adicionarPlaylist(pa);
+        usuarioLogado
+                .adicionarPlaylist(playlist);
     }
 
+    // CADASTRAR MÚSICA
     public static void cadastrarMusica() {
 
         System.out.println(
@@ -378,22 +482,38 @@ public class StreamingMusica {
 
         System.out.print("Título: ");
 
-        String titulo = scanner.nextLine();
+        String titulo =
+                scanner.nextLine();
 
         System.out.print("Artista: ");
 
-        String artista = scanner.nextLine();
+        String artista =
+                scanner.nextLine();
 
         System.out.print("Duração: ");
 
-        int duracao =
-                Integer.parseInt(
-                        scanner.nextLine()
-                );
+        int duracao;
+
+        try {
+
+            duracao =
+                    Integer.parseInt(
+                            scanner.nextLine()
+                    );
+
+        } catch (Exception e) {
+
+            System.out.println(
+                    "❌ Duração inválida!"
+            );
+
+            return;
+        }
 
         System.out.print("Gênero: ");
 
-        String genero = scanner.nextLine();
+        String genero =
+                scanner.nextLine();
 
         musicas.add(
                 new Musica(
@@ -409,11 +529,14 @@ public class StreamingMusica {
         );
     }
 
+    // LISTAR MÚSICAS
     public static void listarMusicas() {
 
         if (musicas.isEmpty()) {
 
-            System.out.println("Nenhuma música!");
+            System.out.println(
+                    "Nenhuma música!"
+            );
 
             return;
         }
@@ -434,23 +557,25 @@ public class StreamingMusica {
         }
     }
 
+    // BUSCAR
     public static void buscarPorTitulo() {
 
         System.out.print("Buscar: ");
 
         String busca =
-                scanner.nextLine().toLowerCase();
+                scanner.nextLine()
+                        .toLowerCase();
 
         boolean encontrou = false;
 
-        for (Musica m : musicas) {
+        for (Musica musica : musicas) {
 
-            if (m.getTitulo()
+            if (musica.getTitulo()
                     .toLowerCase()
                     .contains(busca)) {
 
-                // Polimorfismo
-                usuarioLogado.ouvirMusica(m);
+                usuarioLogado
+                        .ouvirMusica(musica);
 
                 encontrou = true;
             }
@@ -464,7 +589,7 @@ public class StreamingMusica {
         }
     }
 
-    // Usuários de teste
+    // USUÁRIOS TESTE
     public static void cadastrarUsuariosTeste() {
 
         usuarios.add(
@@ -480,7 +605,7 @@ public class StreamingMusica {
         );
     }
 
-    // Músicas de teste
+    // MÚSICAS TESTE
     public static void adicionarMusicasTeste() {
 
         musicas.add(
